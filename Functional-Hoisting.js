@@ -33,3 +33,19 @@ function getName() {
     return "Last Function"
 }
 console.log(getName(2, 5))
+
+
+//Interpretaion in javascript
+console.log("2 "+uniqueName)
+var uniqueName = "Outer Unique";
+
+function printName() {
+    console.log("6 "+uniqueName) //due to hoisting in printName it gets undefined value
+
+    var uniqueName = "Inner Unique"
+    
+    console.log("10 "+uniqueName)
+}
+
+printName();
+console.log("14 " + uniqueName);
