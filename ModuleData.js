@@ -10,4 +10,9 @@ var Business = {
     address : "US State"
 }
 
-module.exports = User;
+var quote = "Give Me Some Sunshine";
+module.exports = {
+    User,
+    Business,
+    quote
+};

@@ -67,3 +67,15 @@ if (userDetail && userDetail.age === "29") {
 if (userDetail || userDetail.age === "29") {
     console.log("Checking or operator");    
 }
+
+// String, Number, Boolean, Null, Undefined, --> Object <-- , Symbol
+
+mySym = Symbol("New Value");
+console.log("Symbol ", mySym);
+console.log("TypeOf Symbol ", typeof mySym);
+
+//identifiers can use alphanumeric, can also use special characters like - $, _ , will not start with a number
+
+var _myName, $myName, myName1
+
+//var %myName, *myName, 1myName -in-valid variables
