@@ -1,4 +1,4 @@
-// Closures : A function which contains another function and 
+//Closures : A function which contains another function and 
 //returning function holds the values that which are in public scope of parent functions
 
 //Eccapsulation is achieved, also it gives a module and singleton pattern :
@@ -22,5 +22,7 @@ function Parent(session) {
 }
 
 var myOutPut = Parent("MERNSTack");
-
 console.log(myOutPut("Somewhere in India"))
+
+var myOutPut1 = Parent("MEANSTack");
+console.log(myOutPut1("Somewhere in US"))
