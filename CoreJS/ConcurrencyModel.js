@@ -1,6 +1,7 @@
 //JS is single threaded and we have api's like XHR, SetTimeOut, SetInterval
 
-console.log(1)
+console.log(1) // - facebook 
+console.log(11)
 
 setTimeout(function () { //non blocking execution done by javascript using a concurrency model and event loop
     console.log(2)
