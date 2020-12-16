@@ -31,6 +31,13 @@ git clone https://github.com/MishraAshish/MERNStack4.git
 
 // subsequent times we need to run - git pull
 
+//http://localhost:9090/getproducts - a get api
+
+//npm init - to initialize the project
+//npm install or npm i - to install module dependency
+//npm uninstall or npm u - to uninstall module dependency
+//npm install -DEV or npm i -DEV -> to install module dependency
+
 //if you have changes in your machine - so either you resolve that or use 
 //git reset --hard and then take 
 //git pull
