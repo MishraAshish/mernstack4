@@ -3,19 +3,19 @@
 function resolveAfter2Seconds() {
 
     return new Promise((resolve,reject) => {
-                setTimeout(() => {
-                    resolve({
-                        "statuscode" : 200,
-                        "statusmsg" :'resolved'
-                        });
-                }, 2000);
+            setTimeout(() => {
+                resolve({
+                    "statuscode" : 200,
+                    "statusmsg" :'resolved'
+                    });
+            }, 2000);
 
-                setTimeout(() => {
-                    reject({
-                        "statuscode" : 500,
-                        "statusmsg" :'rejected'
-                        });
-                }, 1000);
+            setTimeout(() => {
+                reject({
+                    "statuscode" : 500,
+                    "statusmsg" :'rejected'
+                    });
+            }, 1000);
     });
 
 }
