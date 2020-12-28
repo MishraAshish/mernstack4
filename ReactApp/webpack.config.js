@@ -78,7 +78,7 @@ webpackConfig = {
         // 'watchContentBase'
         watchContentBase: true
     },
-    //devtool: 'source-map',
+    //devtool: 'source-map', //this will give us a copy of human readable format of files basically all files that we used
     //mode: 'production'
 }
 
