@@ -10,6 +10,16 @@ import Home from "../app/CommonComponent/HomeComponent";
 class App extends React.Component{ //name of the component must start with a capital case
     constructor(props, context){
         super(props);
+        this.state = {
+            childValue : "No child data sent"
+        }
+    }
+
+    getDataFromChild = (data)=>{ //call back function to be executed in child component to read data
+        //alert("data from child = "+ data);
+        this.setState({
+            childValue : data
+        })
     }
 
     render(){
@@ -23,8 +33,9 @@ class App extends React.Component{ //name of the component must start with a cap
                 {/* <h1>This is react code from react js page MERN</h1> */}
                 {a+b}
                 {a*b}
+                <b>{this.state.childValue}</b>
                 <Header/>
-                <Home name="Parents Name" />
+                <Home funcAsProp={this.getDataFromChild}/>
                 <Footer name="test name" address="test address" user={user}>
                     <b>This is bold html passed</b>
                     <i>This is italic html passed</i>

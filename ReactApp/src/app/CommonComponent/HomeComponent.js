@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 export default class HomeComponent extends Component { //class component
 
@@ -41,7 +42,7 @@ export default class HomeComponent extends Component { //class component
                 name: this.input.current.value, //reading directly values from html elements which are created by ref 
                 age: this.inputAge.current.value
             })
-            state = {};
+//            state = {};
         // } catch (error) {
         //     console.log("error" + error)
         // }
@@ -55,6 +56,9 @@ export default class HomeComponent extends Component { //class component
                 <b>{this.state.name}</b>
                 <input type="text" value={this.state.name} onChange={this.onTextChange}/>
                 <input type="text" value={this.state.age}/>
+
+                {/* <input type="button" className="button" onClick={()=>this.props.funcAsProp("Joe Biden")} value="Call Back To Parent"></input> */}
+                <input type="button" className="button" onClick={()=>this.props.funcAsProp(this.state.age)} value="Call Back To Parent"></input>
 
                 {/* controlled Component implementation using ref keyword */}
                  <form onSubmit={this.handleSubmit}>
@@ -73,4 +77,12 @@ export default class HomeComponent extends Component { //class component
             </React.Fragment>
         )
     }
+}
+
+// HomeComponent.defaultProps = {
+//     name : "Default Name When not supplied"
+// }
+
+HomeComponent.propTypes = {
+    name: PropTypes.string.isRequired
 }
