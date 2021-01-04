@@ -17,10 +17,12 @@ class App extends React.Component{ //name of the component must start with a cap
             name : "username",
             pwd : "welcome"
         }
+        let a = 10, b = 15;
         return( //the jsx returned must have one top parent  //react uses diff algorithm to compare
             <React.Fragment> 
                 {/* <h1>This is react code from react js page MERN</h1> */}
-                
+                {a+b}
+                {a*b}
                 <Header/>
                 <Home name="Parents Name" />
                 <Footer name="test name" address="test address" user={user}>
