@@ -1,8 +1,13 @@
-import React, { Component } from "react";
+import React, { Component, PureComponent } from "react";
 import PropTypes from "prop-types";
 
-export default class HomeComponent extends Component { //class component
+//export default class HomeComponent extends Component { //class component
 
+//this component contains inbuilt shouldComponent update to check each and every 
+//state and props so we need not to implment it while using PureComponent class
+export default class HomeComponent extends PureComponent { 
+
+    //creation life cycle methods
     constructor(props, context){
         super();
         this.state = { // state is mutable object which user can update
@@ -14,16 +19,70 @@ export default class HomeComponent extends Component { //class component
         this.inputAge = React.createRef();
     }
 
+    componentDidMount(){
+        //this gets called immediately after first render and your view is ready
+        //change the state using - setState and can access the html/view and can make ajax to server
+        console.log("componentDidMount");
+        //debugger;
+        setTimeout(() => {
+            this.input.current.focus();
+            //this.input.current.value = "Added Value in Did Mount";   
+            this.inputAge.current.value = "Trump";
+            this.updateAge();
+        }, 3000);
+    }
+
+    //destruction life cycle methods
+    componentWillUnmount(){
+        console.log("componentWillUnmount");
+        //previous component needs to clear all subscriptions and any pending calls while navigating to other component
+    }
+
+    //update life cycle methods
+    // shouldComponentUpdate(nextState, nextProps) {
+    //     console.log("shouldComponentUpdate");
+    //     console.log("nextState",nextState);
+    //     console.log("nextProps", nextProps);
+    //     if (nextProps.age == this.state.age || nextProps.age < 30) {
+    //         return false;
+    //     } else {
+    //         return true;    
+    //     }
+    // }
+
+    getSnapshotBeforeUpdate(prevState, prevProps){
+        console.log("getSnapshotBeforeUpdate");
+        console.log("prevState",prevState);
+        console.log("prevProps", prevProps);
+        return {
+            prevState,
+            prevProps
+        }
+    }
+
+    componentDidUpdate(prevState, prevProps){
+        console.log("componentDidUpdate");
+        console.log("prevState",prevState);
+        console.log("prevProps", prevProps);
+    }
+
+
     updateAge = ()=>{
         setInterval(() => {
             //this.state.age++;
             this.setState({ // set state is the react api which we must use to update the state
-                age : this.state.age+1
+                //age : this.state.age+1
+                age : 20,
+                name: "Ashish"
             })
 
-            console.log("Age "+ this.state.age);
+            //console.log("Age "+ this.state.age);
 
-            //force update - discuss later
+            console.log("Name Updates "+ this.state.name);
+
+            //this.state.age++;
+            //this.forceUpdate(); //updating state with forceUpdate will skip shouldComponentUpdate thus making logics fail
+
         }, 1000);
     }
 
@@ -49,13 +108,14 @@ export default class HomeComponent extends Component { //class component
     }
 
     render(){
-        alert("State "+ JSON.stringify(this.state))
+        //alert("State "+ JSON.stringify(this.state))
+        console.log("Render Method " +this.state.age)
         return(
             <React.Fragment>
                 <h1>Home Component</h1>
                 <b>{this.state.name}</b>
                 <input type="text" value={this.state.name} onChange={this.onTextChange}/>
-                <input type="text" value={this.state.age}/>
+                <input type="text" value={this.state.age} />
 
                 {/* <input type="button" className="button" onClick={()=>this.props.funcAsProp("Joe Biden")} value="Call Back To Parent"></input> */}
                 <input type="button" className="button" onClick={()=>this.props.funcAsProp(this.state.age)} value="Call Back To Parent"></input>

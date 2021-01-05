@@ -17,7 +17,7 @@ class App extends React.Component{ //name of the component must start with a cap
 
     getDataFromChild = (data)=>{ //call back function to be executed in child component to read data
         //alert("data from child = "+ data);
-        this.setState({
+        this.setState({ //firstName, lastName
             childValue : data
         })
     }
