@@ -108,35 +108,61 @@ export default class HomeComponent extends PureComponent {
     }
 
     render(){
-        //alert("State "+ JSON.stringify(this.state))
-        console.log("Render Method " +this.state.age)
         return(
-            <React.Fragment>
-                <h1>Home Component</h1>
-                <b>{this.state.name}</b>
-                <input type="text" value={this.state.name} onChange={this.onTextChange}/>
-                <input type="text" value={this.state.age} />
+            <div className={"loadimage"} style={{backgroundImage: "url(./images/hm_pic4.jpg)"}}>
+                    {/* <img src={"./images/hm_pic4.jpg"} /> */}
+                    {this.state.Title}
+                    <br/>
+                    <b className="feature">{"Below Feature's We've Implemented in our project :"}</b>
+                    <ul>                     
+                        <li>Sign up new users</li>
+                        <li>Login existing users.</li>
+                        <li>Add products/items to user's cart.</li>
+                        <li>Save the user's cart.</li>
+                        <li>Checkout and pay for items.</li>
+                    </ul>
 
-                {/* <input type="button" className="button" onClick={()=>this.props.funcAsProp("Joe Biden")} value="Call Back To Parent"></input> */}
-                <input type="button" className="button" onClick={()=>this.props.funcAsProp(this.state.age)} value="Call Back To Parent"></input>
-
-                {/* controlled Component implementation using ref keyword */}
-                 <form onSubmit={this.handleSubmit}>
-                     <label>
-                     Name:
-                         <input type="text" ref={this.input} placeholder="Please enter name"/>
-                     </label>
-                    
-                     <label>
-                     Age:
-                         <input type="text" ref={this.inputAge} placeholder="Please enter age"/>
-                     </label>
-
-                     <input type="submit" value="Submit" />
-                 </form>
-            </React.Fragment>
+                    {/* <label>
+                    Address:
+                         <input type="text" ref={this.inputAddress} placeholder="Please enter age"/>
+                     </label> */}
+                    <button onClick={()=> this.props.history.push("/about/2500")}>GoTo About Page</button>
+                    <br/>
+                    <button onClick={()=> this.props.history.push("/hook")}>GoTo React Hooks</button>
+                </div>
         )
     }
+
+    // render(){
+    //     //alert("State "+ JSON.stringify(this.state))
+    //     console.log("Render Method " +this.state.age)
+    //     return(
+    //         <React.Fragment>
+    //             <h1>Home Component</h1>
+    //             <b>{this.state.name}</b>
+    //             <input type="text" value={this.state.name} onChange={this.onTextChange}/>
+    //             <input type="text" value={this.state.age} />
+
+    //             {/* <input type="button" className="button" onClick={()=>this.props.funcAsProp("Joe Biden")} value="Call Back To Parent"></input> */}
+    //             <input type="button" className="button" onClick={()=>this.props.funcAsProp(this.state.age)} value="Call Back To Parent"></input>
+
+    //             {/* controlled Component implementation using ref keyword */}
+    //              <form onSubmit={this.handleSubmit}>
+    //                  <label>
+    //                  Name:
+    //                      <input type="text" ref={this.input} placeholder="Please enter name"/>
+    //                  </label>
+                    
+    //                  <label>
+    //                  Age:
+    //                      <input type="text" ref={this.inputAge} placeholder="Please enter age"/>
+    //                  </label>
+
+    //                  <input type="submit" value="Submit" />
+    //              </form>
+    //         </React.Fragment>
+    //     )
+    // }
 }
 
 // HomeComponent.defaultProps = {

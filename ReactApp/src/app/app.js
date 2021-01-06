@@ -5,6 +5,7 @@ import Header, {Header2, newvar} from "../app/CommonComponent/HeaderComponent";
 import Footer from "../app/CommonComponent/FooterComponent";
 import Home from "../app/CommonComponent/HomeComponent";
 import About from "../app/CommonComponent/AboutComponent";
+import NotFound from  "../app/CommonComponent/PageNotFound";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 class App extends React.Component {
@@ -18,7 +19,8 @@ class App extends React.Component {
                             <Route path="/home" exact component={Home} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
-                            <Route path="/" component={Home} />
+                            {/* <Route path="/" component={Home} /> */}
+                            <Route path="*" component={NotFound} />
                         </Switch>
                     <Footer />
                 </Router>
