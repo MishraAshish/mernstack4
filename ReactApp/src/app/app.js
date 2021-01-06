@@ -6,6 +6,7 @@ import Footer from "../app/CommonComponent/FooterComponent";
 import Home from "../app/CommonComponent/HomeComponent";
 import About from "../app/CommonComponent/AboutComponent";
 import NotFound from  "../app/CommonComponent/PageNotFound";
+import User from "./ApplicationComponent/Components/User/UserComponent";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 class App extends React.Component {
@@ -17,6 +18,7 @@ class App extends React.Component {
                     <Header />
                         <Switch>
                             <Route path="/home" exact component={Home} />
+                            <Route path="/user" exact component={User} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
                             {/* <Route path="/" component={Home} /> */}
