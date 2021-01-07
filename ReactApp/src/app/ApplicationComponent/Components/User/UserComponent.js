@@ -41,7 +41,7 @@ export default class User extends Component{
     LoginUser = (evt)=>{
         //alert("This needs to be implemented!")
         console.log("Payload Would be", this.state);
-        alert(JSON.stringify(this.state));
+        //alert(JSON.stringify(this.state));
         this.props.loginUser(this.state);
     }
     
@@ -55,7 +55,7 @@ export default class User extends Component{
             password: nextProps.user.password,
             street: nextProps.user.street,
             mobile: nextProps.user.mobile,
-            _id:nextProps.user._id
+            _id: nextProps.user._id
         })
     }
 
@@ -88,7 +88,7 @@ export default class User extends Component{
                             placeholder="Mobile" maxLength="11"
                             onChange={this.onChangeText} />
                     </div>
-                    {/* {this.props.user._id} */}
+                    {this.props.user._id}
                     <input type="button" className={"btn btn-primary col-md-2 saveUser"} value={"SignIn-Up"} onClick={this.LoginUser}/>
                 </div>
             </section>

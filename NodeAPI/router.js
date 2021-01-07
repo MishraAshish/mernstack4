@@ -3,7 +3,31 @@ let express = require("express");
 //let router = express.Router({caseSensitive: true});
 let router = express.Router();
 let TestUserModel = require("./DataModel/TestDataValue");
+let UserDataModel = require("./DataModel/UserDataModel");
 
+//sign-in sign-up user
+router.post("/api/signinupuser",(req, res)=>{
+    console.log("data", req.body);
+
+    UserDataModel.findOne({userName: req.body.userName},(error, data)=>{
+        if (error) {
+            res.send("Error Occurred");
+        } else if(data) { //if data returned means user is already present
+            res.send(data); //data will be the user object
+        } else {//we need to signup the user
+            let userDataObject = new UserDataModel(req.body); //this creates mongoose model to be used as to make queries
+            userDataObject.save((err, newUserData)=>{ //error first callback
+                if (err) {
+                    res.send("Error in sign up user");
+                } else {
+                    res.send(newUserData); //if user gets successfully created we will get the mongodb unique id
+                }
+            })
+        }
+    })
+})
+
+//test and practice
 router.get('/getdata',(req, res)=>{
     
     TestUserModel.find((err, data)=>{

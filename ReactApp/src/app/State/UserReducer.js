@@ -4,10 +4,10 @@ import * as ActionTypes from "./ActionTypes";
 
 let INITIAL_STATE = {
     user : {
-        userName : "test user",
-        password : "asdasdasd",
+        userName : "",
+        password : "",
         street : "capitol hill",
-        mobile : "8989898989898989",
+        mobile : 0,
         _id: ""
     }
 }
