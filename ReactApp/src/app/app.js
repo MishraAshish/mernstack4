@@ -6,7 +6,9 @@ import Footer from "../app/CommonComponent/FooterComponent";
 import Home from "../app/CommonComponent/HomeComponent";
 import About from "../app/CommonComponent/AboutComponent";
 import NotFound from  "../app/CommonComponent/PageNotFound";
-import User from "./ApplicationComponent/Components/User/UserComponent";
+//import User from "./ApplicationComponent/Components/User/UserComponent";
+import User from "./ApplicationComponent/Container/User/UserContainer";
+
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 class App extends React.Component {

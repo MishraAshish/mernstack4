@@ -6,17 +6,18 @@ export default class User extends Component{
     constructor(props, context){
         super();
         this.state = {
-            userName : "",//props.user.userName,
-            password : "",//props.user.password,
-            street : "",//props.user.street,
-            mobile : "",//props.user.mobile
+            userName : props.user.userName,
+            password : props.user.password,
+            street : props.user.street,
+            mobile : props.user.mobile
         }; //userName, password, email, mobile, street
     }
 
-    onChangeText = (evt) =>{
+    onChangeText = (evt) =>{ //evt is the context of html control over which event has been raised
         let target = evt.target; //core js way of reading the target we are typing in
         let classList = target.classList;
         let typedValue = target.value;
+        
         //debugger;
         if (classList.contains("username")) {
             this.setState({
@@ -40,6 +41,7 @@ export default class User extends Component{
     LoginUser = (evt)=>{
         //alert("This needs to be implemented!")
         console.log("Payload Would be", this.state);
+        alert(JSON.stringify(this.state));
         this.props.loginUser(this.state);
     }
     
@@ -47,6 +49,7 @@ export default class User extends Component{
     //once broadcated by store
     componentWillReceiveProps(nextProps){
         console.log("next props", nextProps);
+        
         this.setState({
             userName: nextProps.user.userName,
             password: nextProps.user.password,

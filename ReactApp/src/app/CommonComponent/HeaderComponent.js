@@ -1,8 +1,9 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
+import {connect} from "react-redux";
 
 let Header = (props)=>{
-    let userName = "";//props.user.userName;
+    let userName = props.user.userName; //reading from userReducer
     return(
         <React.Fragment>
              Hi <b>{userName +", "}</b> Welcome to SynergisticIT Shopping Cart 
@@ -15,7 +16,13 @@ let Header = (props)=>{
     )
 }
 
-export default Header; //default export so needs to be imported default (without curly brackets)
+let mapStateToProps = (state) => {
+    return {
+        user : state.user.user
+    }
+}
+
+export default connect(mapStateToProps, null)(Header); //default export so needs to be imported default (without curly brackets)
 
 export let newvar = "something"; // creating and exporting varible
 
