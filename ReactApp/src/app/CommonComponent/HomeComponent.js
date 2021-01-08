@@ -128,7 +128,7 @@ export default class HomeComponent extends PureComponent {
                      </label> */}
                     <button onClick={()=> this.props.history.push("/about/2500")}>GoTo About Page</button>
                     <br/>
-                    <button onClick={()=> this.props.history.push("/hook")}>GoTo React Hooks</button>
+                    <button onClick={()=> this.props.history.push("/userhook")}>GoTo User Hooks</button>
                 </div>
         )
     }

@@ -10,6 +10,7 @@ router.post("/api/signinupuser",(req, res)=>{
     console.log("data", req.body);
 
     UserDataModel.findOne({userName: req.body.userName},(error, data)=>{
+        setTimeout(()=>{
         if (error) {
             res.send("Error Occurred");
         } else if(data) { //if data returned means user is already present
@@ -24,6 +25,7 @@ router.post("/api/signinupuser",(req, res)=>{
                 }
             })
         }
+    },2000)
     })
 })
 

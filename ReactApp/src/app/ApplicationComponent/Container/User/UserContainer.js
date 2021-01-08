@@ -1,8 +1,8 @@
 //this file will use connect method of react-redux library to give access of store and also allow us to dispatch action
 import {connect} from "react-redux";
-import UserComponent from "../../Components/User/UserComponent";
+import UserComponent from "../../Components/User/UserComponent"; //react code
 
-import {addUserToStore, signInUpUser} from "../../../State/Actions";
+import {addUserToStore, signInUpUser} from "../../../State/Actions"; //redux code
 
 //we have been given with two methods
 //1. mapStateToProps - allows us to access everything from store in component props (subscriber)

@@ -6,7 +6,7 @@ let INITIAL_STATE = {
     user : {
         userName : "",
         password : "",
-        street : "capitol hill",
+        street : "",
         mobile : 0,
         _id: ""
     }
@@ -19,8 +19,8 @@ let UserReducer = (previousState = INITIAL_STATE, action) => {
             console.log("Adduser To Store Reducer", action)
             //we will create a new state using payload passed from user component and container
             //for every action dispatch reducer generates a new state
-            // let newState = Object.assign(previousState);
-            // newState.user = action.payload.user;
+            //let newState = Object.assign(previousState);
+            //newState.user = action.payload.user;
 
             return {...previousState, user:action.payload.user}; //returns a new state
     
