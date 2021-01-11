@@ -10,6 +10,7 @@ import NotFound from  "../app/CommonComponent/PageNotFound";
 import User from "./ApplicationComponent/Container/User/UserContainer";
 import UserHook from "./ApplicationComponent/Components/User/UserCompHooks";
 import Product from "./ApplicationComponent/Container/Product/ProductContainer";
+import DisplayProduct from "./ApplicationComponent/Container/Product/DisplayProductContainer";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -25,6 +26,7 @@ class App extends React.Component {
                             <Route path="/user" exact component={User} />
                             <Route path="/userhook" exact component={UserHook} />
                             <Route path="/product" exact component={Product} />
+                            <Route path="/display" exact component={DisplayProduct} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
                             {/* <Route path="/" component={Home} /> */}

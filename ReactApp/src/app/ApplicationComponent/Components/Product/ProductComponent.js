@@ -1,5 +1,5 @@
 import React from "react";
-//import DisplayProducts from "../../Containers/Product/DisplayProductContainer";
+import DisplayProducts from "../../Container/Product/DisplayProductContainer";
 
 export default class Product extends React.Component {
     constructor(props, context){
@@ -48,24 +48,24 @@ export default class Product extends React.Component {
         }
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     console.log("this - ", nextProps);
-    //     //if (this.props.loading) {
-    //         this.setState({
-    //             name : nextProps.defaultProd.name,
-    //             price : nextProps.defaultProd.price,
-    //             camera : nextProps.defaultProd.camera,
-    //             ram : nextProps.defaultProd.ram,
-    //             display : nextProps.defaultProd.display,
-    //             color : nextProps.defaultProd.color
-    //         })
-    //     //}
-    // }
+    componentWillReceiveProps(nextProps){
+        console.log("this - ", nextProps);
+        //if (this.props.loading) {
+            this.setState({
+                name : nextProps.defaultProd.name,
+                price : nextProps.defaultProd.price,
+                camera : nextProps.defaultProd.camera,
+                ram : nextProps.defaultProd.ram,
+                display : nextProps.defaultProd.display,
+                color : nextProps.defaultProd.color
+            })
+        //}
+    }
 
     saveProduct = ()=>{
         //saving product using server call
         console.log(this.state);
-        alert("State Data "+ JSON.stringify(this.state));
+        //alert("State Data "+ JSON.stringify(this.state));
         this.props.saveProduct(this.state);
     }
 
@@ -121,7 +121,7 @@ export default class Product extends React.Component {
                 
                 <br/>
                 <hr/>
-                {/* <DisplayProducts/> */}
+                <DisplayProducts/>
             </section>
         )
     }
