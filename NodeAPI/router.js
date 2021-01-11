@@ -4,13 +4,39 @@ let express = require("express");
 let router = express.Router();
 let TestUserModel = require("./DataModel/TestDataValue");
 let UserDataModel = require("./DataModel/UserDataModel");
+let ProductDataModel = require("./DataModel/ProductDataModel");
+
+//product api's
+router.post('/api/saveproduct',(req, res)=>{
+    console.log("product data ", req.body);
+
+    let productDataObject = new ProductDataModel(req.body); //this creates mongoose model to be used as to make queries
+        
+    productDataObject.save((err, newProductData)=>{ //error first callback
+        if (err) {
+                res.send("Error in product saving");
+        } else {
+                res.send(newProductData); //if product successfully saved we will get the mongodb unique id
+        }
+    })
+})
+
+router.get('/api/getproducts',(req, res)=>{
+    ProductDataModel.find((err, products)=>{ //error first callback
+        if (err) {
+                res.send("Error in getting products");
+        } else {
+                res.send(products);
+        }
+    })
+})
 
 //sign-in sign-up user
 router.post("/api/signinupuser",(req, res)=>{
     console.log("data", req.body);
 
     UserDataModel.findOne({userName: req.body.userName},(error, data)=>{
-        setTimeout(()=>{
+    //    setTimeout(()=>{
         if (error) {
             res.send("Error Occurred");
         } else if(data) { //if data returned means user is already present
@@ -25,7 +51,7 @@ router.post("/api/signinupuser",(req, res)=>{
                 }
             })
         }
-    },2000)
+    //},2000)
     })
 })
 
