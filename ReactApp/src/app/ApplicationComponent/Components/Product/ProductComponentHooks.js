@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import DisplayProductCompHook from "./DisplayProductCompHook";
+// import DisplayProducts from "../../Container/Product/DisplayProductContainer";
 
-import DisplayProducts from "../../Container/Product/DisplayProductContainer";
+
 import { saveProduct } from "../../../State/Actions";
 
 //creating functional component using react hooks and react-redux hooks
@@ -106,7 +108,8 @@ let ProductComponentHooks = (props) => {
                 </div>
                 
                 <br/>
-                <DisplayProducts/>
+                {/* <DisplayProducts/> */}
+                <DisplayProductCompHook />
             </section>
         </React.Fragment>
     )
