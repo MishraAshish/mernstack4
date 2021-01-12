@@ -11,7 +11,12 @@ let Header = (props)=>{
             <hr/>
             <NavLink to="/home" className="button" activeClassName="success" >Home </NavLink> 
             <NavLink to="/user" className="button" activeClassName="success" >User </NavLink> 
-            {userName && <NavLink to="/product" className="button" activeClassName="success" >Product </NavLink> }
+            {userName &&
+            <React.Fragment> 
+                <NavLink to="/cart" className="button" activeClassName="success" >Cart </NavLink> 
+                <NavLink to="/product" className="button" activeClassName="success" >Product </NavLink> 
+            </React.Fragment>
+            }
             <NavLink to="/about" className="button" activeClassName="success" >About </NavLink> 
         </React.Fragment>
     )

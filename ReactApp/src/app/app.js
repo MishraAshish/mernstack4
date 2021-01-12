@@ -12,6 +12,7 @@ import UserHook from "./ApplicationComponent/Components/User/UserCompHooks";
 import Product from "./ApplicationComponent/Container/Product/ProductContainer";
 import DisplayProduct from "./ApplicationComponent/Container/Product/DisplayProductContainer";
 import ProdHook from "./ApplicationComponent/Components/Product/ProductComponentHooks";
+import Cart from "./ApplicationComponent/Container/Cart/CartContainer";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
@@ -28,6 +29,7 @@ class App extends React.Component {
                             <Route path="/userhook" exact component={UserHook} />
                             {/* <Route path="/product" exact component={Product} /> */}
                             <Route path="/product" exact component={ProdHook} />
+                            <Route path="/cart" exact component={Cart} />
                             <Route path="/display" exact component={DisplayProduct} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
