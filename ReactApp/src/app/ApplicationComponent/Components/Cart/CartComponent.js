@@ -1,6 +1,6 @@
 import React from "react";
 import CartListComponent from "../../Container/Cart/CartListContainer";
-// import CartSummaryComponent from "../../Containers/Cart/CartSummaryContainer";
+import CartSummaryComponent from "../../Container/Cart/CartSummaryContainer";
 
 let CartComponent = (props) => {
     return(
@@ -17,7 +17,7 @@ let CartComponent = (props) => {
                 </button>
 
                  <CartListComponent/>            
-                {/*<CartSummaryComponent/> */}
+                <CartSummaryComponent/>
                 
                 <button onClick={() => props.saveItemsForCheckout(props.cart, props.user._id)} >
                     Save For Checkout
