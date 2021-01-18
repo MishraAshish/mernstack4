@@ -1,20 +1,93 @@
 import React from "react";
 import "../app.css";
-import Header, {Header2, newvar} from "../app/CommonComponent/HeaderComponent";
+//import Header, {Header2, newvar} from "../app/CommonComponent/HeaderComponent";
 //import * as Header from "../app/CommonComponent/HeaderComponent"; //wild card import
-import Footer from "../app/CommonComponent/FooterComponent";
-import Home from "../app/CommonComponent/HomeComponent";
-import About from "../app/CommonComponent/AboutComponent";
-import NotFound from  "../app/CommonComponent/PageNotFound";
+//import Footer from "../app/CommonComponent/FooterComponent";
+//import Home from "../app/CommonComponent/HomeComponent";
+//import About from "../app/CommonComponent/AboutComponent";
+//import NotFound from  "../app/CommonComponent/PageNotFound";
 //import User from "./ApplicationComponent/Components/User/UserComponent";
-import User from "./ApplicationComponent/Container/User/UserContainer";
-import UserHook from "./ApplicationComponent/Components/User/UserCompHooks";
-import Product from "./ApplicationComponent/Container/Product/ProductContainer";
-import DisplayProduct from "./ApplicationComponent/Container/Product/DisplayProductContainer";
-import ProdHook from "./ApplicationComponent/Components/Product/ProductComponentHooks";
-import Cart from "./ApplicationComponent/Container/Cart/CartContainer";
+//import User from "./ApplicationComponent/Container/User/UserContainer";
+//import UserHook from "./ApplicationComponent/Components/User/UserCompHooks";
+//import Product from "./ApplicationComponent/Container/Product/ProductContainer";
+//import DisplayProduct from "./ApplicationComponent/Container/Product/DisplayProductContainer";
+//import ProdHook from "./ApplicationComponent/Components/Product/ProductComponentHooks";
+//import Cart from "./ApplicationComponent/Container/Cart/CartContainer";
+//import Checkout from "./ApplicationComponent/Container/Checkout/CheckoutContainer";
+//import Coupon from "./ApplicationComponent/Components/Coupon/CouponComponent";
 
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Loadable from "react-loadable"; // Importing Loadable to be used for lazy loading
+
+// functional component, used as placeholder
+//when lazy loaded modules delayed
+function Loading() {
+    return (
+        <div>
+            Loading Project...
+        </div>
+    )
+}
+
+const Home = Loadable({
+    loader: () => import("./CommonComponent/HomeComponent"),
+    loading: Loading,
+});
+
+const Header = Loadable({
+    loader: () => import("./CommonComponent/HeaderComponent"),
+    loading: Loading,
+});
+
+const Footer = Loadable({
+    loader: () => import("./CommonComponent/FooterComponent"),
+    loading: Loading,
+});
+
+const About = Loadable({
+    loader: () => import("./CommonComponent/AboutComponent"),
+    loading: Loading,
+});
+
+const NotFound = Loadable({
+    loader: () => import("./CommonComponent/PageNotFound"),
+    loading: Loading,
+});
+
+const UserHook = Loadable({
+    loader: () => import("./ApplicationComponent/Components/User/UserCompHooks"),
+    loading: Loading,
+});
+
+const User = Loadable({
+    loader: () => import("./ApplicationComponent/Container/User/UserContainer"),
+    loading: Loading,
+});
+
+const DisplayProduct = Loadable({
+    loader: () => import("./ApplicationComponent/Container/Product/DisplayProductContainer"),
+    loading: Loading,
+});
+
+const ProdHook = Loadable({
+    loader: () => import("./ApplicationComponent/Components/Product/ProductComponentHooks"),
+    loading: Loading,
+});
+
+const Cart = Loadable({
+    loader: () => import("./ApplicationComponent/Container/Cart/CartContainer"),
+    loading: Loading,
+});
+
+const Checkout = Loadable({
+    loader: () => import("./ApplicationComponent/Container/Checkout/CheckoutContainer"),
+    loading: Loading,
+});
+
+const Coupon = Loadable({
+    loader: () => import("./ApplicationComponent/Components/Coupon/CouponComponent"),
+    loading: Loading,
+});
 
 class App extends React.Component {
 
@@ -31,6 +104,8 @@ class App extends React.Component {
                             <Route path="/product" exact component={ProdHook} />
                             <Route path="/cart" exact component={Cart} />
                             <Route path="/display" exact component={DisplayProduct} />
+                            <Route path="/checkout" exact component={Checkout} />
+                            <Route path="/coupon" exact component={Coupon} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
                             {/* <Route path="/" component={Home} /> */}
