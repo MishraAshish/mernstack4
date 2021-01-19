@@ -384,6 +384,7 @@ optgroup {
   padding: 5px;  
   text-align: left;
   color: #f5f5f5;
+  /* border-radius: 50%; */
 }
 .loadimage ul{
   padding-top: 10px;
