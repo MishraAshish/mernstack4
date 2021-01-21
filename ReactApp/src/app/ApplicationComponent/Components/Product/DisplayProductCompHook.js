@@ -2,7 +2,8 @@ import React, {useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";//another set of hooks to read directly from store and publish
 import { fetchProducts } from "../../../State/Actions";
 
-import DisplayDetailedProduct from "./DisplayDetailedProductComponent";
+//import DisplayDetailedProduct from "./DisplayDetailedProductComponent";
+import DisplayDetailedProduct from "./DisplayDetProdCompHook";
 
 
 let DisplayProductCompHook = ()=>{

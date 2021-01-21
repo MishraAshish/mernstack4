@@ -123,6 +123,7 @@ export const removeItem = (id) => ({
 export const saveItemsForCheckout = (cart, userid) => {
     console.log("Items To Be Saved", cart); 
     return function(dispatch) {
+        dispatch(loading(true));
         window.fetch("http://localhost:9090/api/saveUserCart",{
             method: 'POST',
             headers: {
@@ -133,9 +134,10 @@ export const saveItemsForCheckout = (cart, userid) => {
         .then (response => response.json())
         .then (usercartresponse => {
             console.log("response ", usercartresponse);
-            //dispatch(loading(false));
+            dispatch(loading(false));
         })
         .catch((err)=>{
+            dispatch(loading(false));
             console.log("Error While Saving Cart", err);
         }) 
     }
@@ -176,3 +178,16 @@ export const addCoupon = (coupon) => ({
     type: ActionTypes.ADD_COUPON,
     payload: coupon
 });
+
+
+//loading action
+export const loading = (showHide) => ({        
+    type: ActionTypes.SHOW_LOADING,
+    payload: showHide
+});
+
+// cart actions add, empty, remove and update
+export const addItemToNCart = (item)=>({
+    type: ActionTypes.ADD_ITEM_N,
+    payload: {item} //{item:item}
+})

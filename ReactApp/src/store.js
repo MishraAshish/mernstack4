@@ -8,7 +8,9 @@ import promise from "redux-promise-middleware";
 import user from "../src/app/State/UserReducer";
 import product from "../src/app/State/ProductReducer";
 import cart from "../src/app/State/CartReducer";
+import ncart from "../src/app/State/NCartReducer";
 import coupon from "../src/app/State/CouponReducer";
+import loading from "../src/app/State/LoadingReducer";
 
 let logger = () => (next) => (action) => {
     //currying in javasript where we pass function as input and recieve function as output
@@ -22,7 +24,9 @@ export default createStore(
        user, //short-hand ->  used to replace user : user with only - user
        product,
        cart,
-       coupon
+       coupon,
+       loading,
+       ncart
     }),
     {}, //intial state for store states
     applyMiddleware(logger, thunk, promise) //middle wares tp used at various places like action.js

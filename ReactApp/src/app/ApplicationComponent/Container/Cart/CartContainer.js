@@ -6,7 +6,8 @@ import {addItemToCart, emptyTheCart, saveItemsForCheckout} from '../../../State/
 let mapStateToProps = (state)=>{
     return {
         cart : state.cart,
-        user: state.user.user
+        user: state.user.user,
+        loading : state.loading.loading
     }
 }
 

@@ -89,6 +89,11 @@ const Coupon = Loadable({
     loading: Loading,
 });
 
+const NCart = Loadable({
+    loader: () => import("./ApplicationComponent/Components/NCart/NCartComponent"),
+    loading: Loading,
+});
+
 class App extends React.Component {
 
     render(){
@@ -102,7 +107,8 @@ class App extends React.Component {
                             <Route path="/userhook" exact component={UserHook} />
                             {/* <Route path="/product" exact component={Product} /> */}
                             <Route path="/product" exact component={ProdHook} />
-                            <Route path="/cart" exact component={Cart} />
+                            {/* <Route path="/cart" exact component={Cart} /> */}
+                            <Route path="/cart" exact component={NCart} />
                             <Route path="/display" exact component={DisplayProduct} />
                             <Route path="/checkout" exact component={Checkout} />
                             <Route path="/coupon" exact component={Coupon} />
