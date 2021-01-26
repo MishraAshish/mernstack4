@@ -191,3 +191,10 @@ export const addItemToNCart = (item)=>({
     type: ActionTypes.ADD_ITEM_N,
     payload: {item} //{item:item}
 })
+
+export const removeItemN = (id) => ({
+    type: ActionTypes.REMOVE_ITEM_N,
+    payload: {
+        id
+    }
+});

@@ -26,7 +26,7 @@ export default function NCartReducer(state = INITIAL_STATE, action) {
 
         //delete cart item which needs to be removed
         case ActionTypes.REMOVE_ITEM_N: 
-            return state.filter(item => item.id != action.payload.id)
+            return state.filter(item => item._id != action.payload.id)
 
         //return basic intial state
         default:

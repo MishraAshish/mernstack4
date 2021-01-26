@@ -1,24 +1,32 @@
 //hooks are basically providing in built implementation of various features 
 // : like state, subsrcibing/publishing from/to store within functional component
 
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 
-import {signInUpUser} from "../../../State/Actions";
+import {signInUpUser} from "../../../State/Actions"; // add action - fetchHobbies
 
 let UserCompHooks = (props)=>{
     
     //make our component publisher / action dispatcher instead of mapDispatchToProps
     let dispatchToSignInUp = useDispatch(); //initializing dispatcher to dispatch action to store 
+    let getHobyListDispatch = useDispatch();
+
 
     //below code makes our component a subscriber and state is the data avaible from store eventually reducers
     let user = useSelector((state)=> state.user.user); // connects mapStateToProps
+    //let hobyList = useSelector((state)=>state.hobby.hobbies)
 
     //useState : is the react hook which allows us to create a state like object individually
-    let [userName, setUserName] = new useState("");
+    let [userName, updateUserName] = new useState("Brian");
     let [password, setPassword] = new useState("");
     let [street, setStreet] = new useState("");
     let [mobile, setMobile] = new useState("");
+
+    // useEffect(()=>{ //triggered after first render and then subsequent render
+    //     console.log("Use Effect Gets Called a replacement of componentdidmount and componentdidupdate");
+    //     hobyList.length < 1 ? getHobyListDispatch(fetchHobbies()) : "";
+    // }, [])
 
 
     let onChangeText = (evt)=>{
@@ -28,7 +36,7 @@ let UserCompHooks = (props)=>{
         
         //debugger;
         if (classList.contains("username")) {
-            setUserName(typedValue)
+            updateUserName(typedValue)
         } else if(classList.contains("pass")) {
             setPassword(typedValue)
         } else if(classList.contains("street")){

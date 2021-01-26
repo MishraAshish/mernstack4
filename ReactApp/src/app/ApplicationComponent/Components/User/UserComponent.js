@@ -13,6 +13,10 @@ export default class User extends Component{
         }; //userName, password, email, mobile, street
     }
 
+    //componentDidMount(){
+
+    //}
+
     onChangeText = (evt) =>{ //evt is the context of html control over which event has been raised
         let target = evt.target; //core js way of reading the target we are typing in
         let classList = target.classList;

@@ -1,9 +1,15 @@
 import React, {useState} from "react";
 import {useSelector, useDispatch} from "react-redux";
+import { removeItemN } from "../../../State/Actions";
 
 export default function NCartComponent(props) {
     //debugger;
     let cart = useSelector((state)=>state.ncart);
+    let removeDispatch = useDispatch();
+
+    let removeItemFromCart = (itemid) => {
+        removeDispatch(removeItemN(itemid))
+    }
 
     console.log(cart);
 
@@ -20,13 +26,13 @@ export default function NCartComponent(props) {
                     <th>Ram</th>
                     <th>Color</th>
                     <th>Display</th>
-                    <th>Remove/Edit</th>
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>
                 {
                     cart.map(item=>{
-                       return <tr id={item.__id}>
+                       return <tr id={item._id}>
                                 <td>{item.name}</td>                    
                                 <td>{item.price}</td>
                                 <td>{item.camera}</td>
@@ -34,7 +40,7 @@ export default function NCartComponent(props) {
                                 <td>{item.color}</td>
                                 <td>{item.display}</td>
                                 <td>
-                                    <button>
+                                    <button onClick={()=>removeItemFromCart(item._id)}>
                                         Remove
                                     </button>
                                 </td>
