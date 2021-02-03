@@ -13,6 +13,7 @@ export default function DisplayDetProdCompHook(props) {
 
     let addToNCart = (product)=>{
         dispatchToNCart(addItemToNCart(product));
+        setShowDetails(!showDetails);
     }
     
     return(
@@ -23,10 +24,8 @@ export default function DisplayDetProdCompHook(props) {
                     {showDetails ?
                         <ul className={"productDetails"}>
                             <li>{product.price}</li>
-                            <li>{product.camera}</li>
-                            <li>{product.ram}</li>
-                            <li>{product.display}</li>
-                            <li>{product.color}</li>
+                            <li>{product.desc}</li>
+                            <li>{product.rating}</li>
                             
                             <button onClick={()=>addToNCart(product)}>Add To Cart</button>
                         </ul>                        

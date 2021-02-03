@@ -23,11 +23,15 @@ let UserCompHooks = (props)=>{
     let [street, setStreet] = new useState("");
     let [mobile, setMobile] = new useState("");
 
-    // useEffect(()=>{ //triggered after first render and then subsequent render
-    //     console.log("Use Effect Gets Called a replacement of componentdidmount and componentdidupdate");
-    //     hobyList.length < 1 ? getHobyListDispatch(fetchHobbies()) : "";
-    // }, [])
+    useEffect(()=>{ //triggered after first render and then subsequent render
+        console.log("Use Effect Gets Called a replacement of componentdidmount and componentdidupdate");
+        hobyList.length < 1 ? getHobyListDispatch(fetchHobbies()) : "";
+    }, [])
 
+
+    useEffect(()=>{
+        hobbies.length < 1 ? dispatchFetchHobbies(fetchHobbies()) : "";
+    }, [])
 
     let onChangeText = (evt)=>{
         let target = evt.target; //core js way of reading the target we are typing in

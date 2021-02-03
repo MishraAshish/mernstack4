@@ -198,3 +198,63 @@ export const removeItemN = (id) => ({
         id
     }
 });
+
+export const updateItemN = (id, qty) => ({
+    type: ActionTypes.UPDATE_ITEM_N,
+    payload: {
+        id,
+        qty: parseInt(qty)
+    }
+});
+
+
+//product
+//dispatching to product reducer using promise (plain promise)
+export const fetchNProducts = () => ({    
+    type : ActionTypes.FETCH_NPRODUCTS,
+    payload: {
+            promise: new Promise((resolve, reject) => { 
+                fetch("http://localhost:9090/api/getnproducts", {
+                    method: 'GET'
+                }).then(                
+                    response => response.json(),
+                    error => console.log('An error occurred.', error)
+                ).then(responseProducts => {
+                    // want to updatePath for the route here:
+                    //dispatch(updatePath('/'));
+                    console.log("responseProducts ", responseProducts)
+                    resolve(responseProducts)
+                })
+                .catch(error => {
+                    reject(error);
+                    //dispatch(error); -- promise Issue                        
+                })
+            })
+        }       
+});
+
+//Product Action and Server Call
+export const saveNProduct = (product)=>{
+    console.log("Product ", product);
+    return function (dispatch) {
+        //dispatch(loading(true));
+
+        window.fetch("http://localhost:9090/api/savenProduct",{
+            method: 'POST', //rest method type 
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then(productresp => productresp.json())
+        .then((productresp)=>{
+            console.log("product save response ", productresp);
+            //dispatch(loading(false));
+            dispatch(fetchNProducts());
+        })
+        .catch((err)=>{
+            console.log("Error While SAving Product", err)
+        })
+    }
+};

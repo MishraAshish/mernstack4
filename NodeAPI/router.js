@@ -5,7 +5,33 @@ let router = express.Router();
 let TestUserModel = require("./DataModel/TestDataValue");
 let UserDataModel = require("./DataModel/UserDataModel");
 let ProductDataModel = require("./DataModel/ProductDataModel"),
+NProductDataModel = require("./DataModel/NProductDataModel"),
 CartModel = require("./DataModel/CartDataModel");
+
+//product api's
+router.post('/api/savenproduct',(req, res)=>{
+    console.log("n product data ", req.body);
+
+    let nProductDataObject = new NProductDataModel(req.body); //this creates mongoose model to be used as to make queries
+        
+    nProductDataObject.save((err, newProductData)=>{ //error first callback
+        if (err) {
+                res.send("Error in product saving");
+        } else {
+                res.send(newProductData); //if product successfully saved we will get the mongodb unique id
+        }
+    })
+})
+
+router.get('/api/getnproducts',(req, res)=>{
+    NProductDataModel.find((err, products)=>{ //error first callback
+        if (err) {
+                res.send("Error in getting products");
+        } else {
+                res.send(products);
+        }
+    })
+})
 
 //cart api's
 router.post("/api/saveUserCart",(req, res)=>{

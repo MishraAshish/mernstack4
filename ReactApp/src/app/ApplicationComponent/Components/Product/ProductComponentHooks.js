@@ -4,18 +4,16 @@ import DisplayProductCompHook from "./DisplayProductCompHook";
 // import DisplayProducts from "../../Container/Product/DisplayProductContainer";
 
 
-import { saveProduct } from "../../../State/Actions";
+import { saveNProduct } from "../../../State/Actions";
 
 //creating functional component using react hooks and react-redux hooks
 
 let ProductComponentHooks = (props) => {
 
-    const [name, setName] = useState("Initial Name"); //initializes the name and returns a callback to save name on state change
+    const [name, setName] = useState("Product Name"); //initializes the name and returns a callback to save name on state change
     const [price, setPrice] = useState(0);
-    const [camera, setCamera] = useState("Initial Camera");
-    const [color, setColor] = useState("Initial Color");
-    const [display, setDisplay] = useState("Initial Display");
-    const [ram, setRam] = useState("Initial RAM");
+    const [desc, setDescription] = useState("Product Description");
+    const [rating, setRating] = useState("Product Rating");
 
     //using useDispatch to publish data to store
     let dispatchToSave = useDispatch(); //this returns a dispatcher so that ajax call can be made synchronously
@@ -28,33 +26,24 @@ let ProductComponentHooks = (props) => {
             setName(target.value)
         }else if(classlist.contains("price")){
             setPrice(parseInt(target.value))
-        }else if(classlist.contains("camera")){
-            setCamera(target.value)
-        }else if(classlist.contains("color")){
-             setColor(target.value)
-        }
-        else if(classlist.contains("display")){
-            setDisplay(target.value)
-        }
-        else{
-            setRam(target.value)    
+        }else if(classlist.contains("desc")){
+            setDescription(target.value)
+        }else{
+            setRating(target.value)
         }
     }
 
     let saveProductClick = ()=>{
          //saving product using server call
-         alert(`You've saved a product with these details: Name = ${name}, Price = $${price}, Camera = ${camera}, Color = ${color},  Display = ${display}, RAM = ${ram}`)
+         alert(`You've saved a product with these details: Name = ${name}, Price = $${price}, Description = ${desc}, Rating = ${rating}`)
          
          let productToSave = {
              name, 
              price,
-             camera,
-             color, 
-             display,
-             ram
+             desc,
+             rating
          };
-         dispatchToSave(saveProduct(productToSave))
-         //this.props.saveProduct(this.state);
+         dispatchToSave(saveNProduct(productToSave))
     }
 
     return(
@@ -76,33 +65,18 @@ let ProductComponentHooks = (props) => {
                     </div>
                     
                     <div className="col-md-12">
-                        <b>Camera </b>
-                    <input type="text" className="form-control col-md-6 camera" value={camera} 
-                          placeholder="Camera"
+                        <b>Description </b>
+                    <input type="text" className="form-control col-md-6 desc" value={desc} 
+                          placeholder="Please Describe the product"
                           onChange={captureValueFromTextBoxes} />
                     </div>
                     
                     <div className="col-md-12">
-                        <b>RAM </b>
-                    <input type="text" className="form-control col-md-6 ram" value={ram} 
-                          placeholder="ram"
+                        <b>Ratings </b>
+                    <input type="text" className="form-control col-md-6" value={rating} 
+                          placeholder="Ratings"
                           onChange={captureValueFromTextBoxes} />
                     </div>
-
-                    <div className="col-md-12">
-                        <b>Display </b>
-                    <input type="text" className="form-control col-md-6 display" value={display} 
-                          placeholder="Display"
-                          onChange={captureValueFromTextBoxes} />
-                    </div>
-
-                    <div className="col-md-12">
-                        <b>Color </b>
-                    <input type="text" className="form-control col-md-6 color" value={color} 
-                          placeholder="Color"
-                          onChange={captureValueFromTextBoxes} />
-                    </div>
-                    
                     
                     <input type="button" className={"btn btn-primary col-md-3"} value={"Save Product"} onClick={saveProductClick}/>
                 </div>

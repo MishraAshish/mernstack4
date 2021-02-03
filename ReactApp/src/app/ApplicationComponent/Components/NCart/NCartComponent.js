@@ -1,20 +1,31 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
-import { removeItemN } from "../../../State/Actions";
+import NCartItemComponent from "./NCartItemComponent";
+import NCartSummaryComponent from "./NCartSummaryComponent";
 
 export default function NCartComponent(props) {
     //debugger;
     let cart = useSelector((state)=>state.ncart);
-    let removeDispatch = useDispatch();
-
-    let removeItemFromCart = (itemid) => {
-        removeDispatch(removeItemN(itemid))
-    }
-
     console.log(cart);
+
+    let recalculate = (cartItems) => {
+        let amount = 0, 
+            count = 0;
+    
+        for(let item of cartItems) {
+            amount += item.qty * item.price;
+            count  += item.qty; 
+        }
+    
+        return {
+            amount, //ES6 syntactic sugar amount: amount 
+            count // if key and values are same name then we can put it this way without ":"
+        }
+    }
 
     return(
         <React.Fragment>
+            <h2>Cart Component</h2>
             {cart && cart.length ? 
             <React.Fragment>
             <table>
@@ -22,36 +33,41 @@ export default function NCartComponent(props) {
                 <tr>
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Camera</th>
-                    <th>Ram</th>
-                    <th>Color</th>
-                    <th>Display</th>
+                    <th>Description</th>
+                    <th>Rating</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
                     <th>Remove</th>
+                    <th>Update</th>
                 </tr>
             </thead>
             <tbody>
                 {
                     cart.map(item=>{
-                       return <tr id={item._id}>
-                                <td>{item.name}</td>                    
-                                <td>{item.price}</td>
-                                <td>{item.camera}</td>
-                                <td>{item.ram}</td>
-                                <td>{item.color}</td>
-                                <td>{item.display}</td>
-                                <td>
-                                    <button onClick={()=>removeItemFromCart(item._id)}>
-                                        Remove
-                                    </button>
-                                </td>
-                            </tr>
+                        return <NCartItemComponent 
+                                        item={item}
+                                        key={item.id}
+                                        donotMakeEditable = {false}
+                            />
                     })
                 } 
             </tbody>
             </table>
+
+            <NCartSummaryComponent summData={recalculate(cart)}/>
+
+            <button onClick={() => props.saveItemsForCheckout(props.cart, props.user._id)} >
+                    Save For Checkout
+            </button> 
+            <button onClick={() => props.history.push("/checkout")} >
+                Go To Checkout
+            </button>
             </React.Fragment>
             :             
-            "No Items Added"}
+            <div>
+                {"No Items Added, Please add products from Product Component"}
+            </div>
+            }
         </React.Fragment>
     )
 }

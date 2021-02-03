@@ -8,6 +8,7 @@ export default function NCartReducer(state = INITIAL_STATE, action) {
         case ActionTypes.ADD_ITEM_N:
             //debugger
             let newState = state.filter(item => item._id != action.payload.item._id);
+            !action.payload.item["qty"] ? action.payload.item["qty"] = 1 : "";
             return [...newState, action.payload.item];
         
         //empty cart
@@ -17,7 +18,7 @@ export default function NCartReducer(state = INITIAL_STATE, action) {
         //update the cart item
         case ActionTypes.UPDATE_ITEM_N:
             return state.map(item => { //here state is cart items array
-                    if (item.id != action.payload.id){
+                    if (item._id != action.payload.id){
                         return item;
                     }else{
                         return {...item, qty: action.payload.qty}

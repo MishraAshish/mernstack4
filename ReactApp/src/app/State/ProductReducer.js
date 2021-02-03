@@ -10,7 +10,8 @@ let INITIAL_STATE = {
         color : ""
      },
 
-     products:[]
+     products:[],
+     nproducts:[],
 }
 
 export default function ProductReducer(state=INITIAL_STATE, action)
@@ -19,6 +20,9 @@ export default function ProductReducer(state=INITIAL_STATE, action)
 
         case ActionTypes.FETCH_PRODUCTS_FULFILLED:            
             return {...state, products:action.payload};
+
+        case ActionTypes.FETCH_NPRODUCTS_FULFILLED:            
+            return {...state, nproducts:action.payload};
 
         default:
             return state;
