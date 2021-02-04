@@ -2,11 +2,14 @@ import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import NCartItemComponent from "./NCartItemComponent";
 import NCartSummaryComponent from "./NCartSummaryComponent";
+import {nSaveItemsForCheckout} from "../../../State/Actions";
 
 export default function NCartComponent(props) {
     //debugger;
     let cart = useSelector((state)=>state.ncart);
-    console.log(cart);
+    let user = useSelector((state)=> state.user.user);
+    let loading = useSelector((state)=>state.loading.loading);
+    let dispatchItemToSave = useDispatch();
 
     let recalculate = (cartItems) => {
         let amount = 0, 
@@ -26,6 +29,9 @@ export default function NCartComponent(props) {
     return(
         <React.Fragment>
             <h2>Cart Component</h2>
+            {loading ? 
+            <p>Saving Items for Checkout...</p>:
+            <React.Fragment>
             {cart && cart.length ? 
             <React.Fragment>
             <table>
@@ -38,7 +44,7 @@ export default function NCartComponent(props) {
                     <th>Quantity</th>
                     <th>Total</th>
                     <th>Remove</th>
-                    <th>Update</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -56,7 +62,7 @@ export default function NCartComponent(props) {
 
             <NCartSummaryComponent summData={recalculate(cart)}/>
 
-            <button onClick={() => props.saveItemsForCheckout(props.cart, props.user._id)} >
+            <button onClick={() => dispatchItemToSave(nSaveItemsForCheckout(cart, user._id))} >
                     Save For Checkout
             </button> 
             <button onClick={() => props.history.push("/checkout")} >
@@ -67,6 +73,8 @@ export default function NCartComponent(props) {
             <div>
                 {"No Items Added, Please add products from Product Component"}
             </div>
+            }
+            </React.Fragment>
             }
         </React.Fragment>
     )

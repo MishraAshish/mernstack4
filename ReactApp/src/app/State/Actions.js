@@ -33,7 +33,8 @@ export const signInUpUser = (userObject)=>{
             dispatch(action); // it will keep the current context to update the user object and takes it to the reducer
             
             //dispatch(loading(false));
-            dispatch(getUserCart(userresp._id));
+            //dispatch(getUserCart(userresp._id));
+            dispatch(getUserNCart(userresp._id));
         })
         .catch((err)=>{
             console.log("Error While Login", err)
@@ -207,6 +208,10 @@ export const updateItemN = (id, qty) => ({
     }
 });
 
+export const emptyTheCartN = () => ({
+    type: ActionTypes.EMPTY_CART_N
+});
+
 
 //product
 //dispatching to product reducer using promise (plain promise)
@@ -258,3 +263,57 @@ export const saveNProduct = (product)=>{
         })
     }
 };
+
+// NCart Methods
+export const nSaveItemsForCheckout = (cart, userid) => {
+    console.log("Items To Be Saved", cart); 
+    return function(dispatch) {
+        dispatch(loading(true));
+        window.fetch("http://localhost:9090/api/saveUserNCart",{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({userid:userid, cart:cart})})
+        .then (response => response.json())
+        .then (usercartresponse => {
+            console.log("response ", usercartresponse);
+            dispatch(loading(false));
+        })
+        .catch((err)=>{
+            dispatch(loading(false));
+            console.log("Error While Saving Cart", err);
+        }) 
+    }
+}
+
+export const getUserNCart = (userid) => {
+        
+    return function(dispatch) {
+        console.log("Get List Of items");
+        window.fetch("http://localhost:9090/api/getUserNCart",{
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({userid:userid})})
+        .then (response => response.json())
+        .then (usercartresponse => {
+            console.log("response - get user cart ", usercartresponse);
+            
+            dispatch(emptyTheCartN()); //remove the duplicacy first empty the cart 
+            
+            for (const item of usercartresponse.cart) {
+                console.log("item in for of", item);
+                let action = addItemToNCart(item);
+                dispatch(action);    
+            }                
+                       
+        })
+        .catch((err)=>{
+            console.log("Error While Login", err)
+        })  
+    }       
+}
