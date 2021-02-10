@@ -33,7 +33,7 @@ export default function NCartItemComponent(props){
                 <td>{item.desc}</td>
                 <td>{item.rating}</td>
                 <td>
-                    {props.donotMakeEditable ?
+                    {props.readOnly ?
                         qty
                         :
                         <input value={qty} 
@@ -44,28 +44,19 @@ export default function NCartItemComponent(props){
                 </td> 
                 
                 <td> {item.price * item.qty} </td>
-                <td>
-                    {props.donotMakeEditable ?
-                    " "
-                    :
-                    <React.Fragment>
+                {props.readOnly ?" ":<td>
                         <button onClick={()=>removeItemFromCart(item._id)}>
                             Remove
                         </button>
-                    </React.Fragment>
+                    </td>
                 }
-                </td>
-                <td>
-                    {props.donotMakeEditable ?
-                    " "
-                    :
-                    <React.Fragment>
+                {props.readOnly ? " ":
+                    <td>
                         <button onClick={() => updateItemFromCart(item._id, qty)}>
                             Update
                         </button>
-                    </React.Fragment>
+                    </td>
                 }
-                </td>
             </tr>
         )
     }

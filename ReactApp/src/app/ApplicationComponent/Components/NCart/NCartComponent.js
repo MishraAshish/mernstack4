@@ -34,40 +34,49 @@ export default function NCartComponent(props) {
             <React.Fragment>
             {cart && cart.length ? 
             <React.Fragment>
-            <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Description</th>
-                    <th>Rating</th>
-                    <th>Quantity</th>
-                    <th>Total</th>
-                    <th>Remove</th>
-                    <th>Edit</th>
-                </tr>
-            </thead>
-            <tbody>
+                <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Rating</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        {
+                            props.readOnly ?  "" : 
+                                <React.Fragment>
+                                    <th>Remove</th>
+                                    <th>Edit</th>
+                                </React.Fragment>
+                        }
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        cart.map(item=>{
+                            return <NCartItemComponent 
+                                            item={item}
+                                            key={item._id}
+                                            readOnly = {props.readOnly}
+                                />
+                        })
+                    } 
+                </tbody>
+                </table>
+
+                <NCartSummaryComponent summData={recalculate(cart)}/>
                 {
-                    cart.map(item=>{
-                        return <NCartItemComponent 
-                                        item={item}
-                                        key={item.id}
-                                        donotMakeEditable = {false}
-                            />
-                    })
-                } 
-            </tbody>
-            </table>
-
-            <NCartSummaryComponent summData={recalculate(cart)}/>
-
-            <button onClick={() => dispatchItemToSave(nSaveItemsForCheckout(cart, user._id))} >
-                    Save For Checkout
-            </button> 
-            <button onClick={() => props.history.push("/checkout")} >
-                Go To Checkout
-            </button>
+                    props.readOnly ? "" : 
+                        <React.Fragment>
+                            <button onClick={() => dispatchItemToSave(nSaveItemsForCheckout(cart, user._id))} >
+                                    Save For Checkout
+                            </button> 
+                            <button onClick={() => props.history.push("/checkout")} >
+                                Go To Checkout
+                            </button>
+                        </React.Fragment> 
+                }
             </React.Fragment>
             :             
             <div>
