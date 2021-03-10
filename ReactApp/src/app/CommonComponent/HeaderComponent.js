@@ -1,11 +1,15 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {connect} from "react-redux";
+// import ReactNotification from 'react-notifications-component';
+// import 'react-notifications-component/dist/theme.css';
+
 
 let Header = (props)=>{
     let userName = props.user.userName; //reading from userReducer
     return(
         <React.Fragment>
+            {/* <ReactNotification /> */}
              Hi <b>{userName +", "}</b> Welcome to SynergisticIT Shopping Cart 
                 {userName == "" ?<b> Please Login to see other features</b>:""}
             <hr/>

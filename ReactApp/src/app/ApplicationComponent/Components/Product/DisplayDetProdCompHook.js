@@ -8,6 +8,7 @@ export default function DisplayDetProdCompHook(props) {
     let dispatchToNCart = useDispatch();
 
     let showHideDetails = (evt)=>{
+        //debugger;
         evt.target.classList.contains("product") ? setShowDetails(!showDetails) : "";
     }
 

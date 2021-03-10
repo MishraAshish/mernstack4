@@ -38,19 +38,21 @@ export default function NCartItemComponent(props){
                         :
                         <input value={qty} 
                             type="number"
-                            onChange={onChangeQuantity}                        
+                            onChange={onChangeQuantity} 
+                            // style={{"width":"40px"}}                       
                         />                
                     }
                 </td> 
                 
                 <td> {item.price * item.qty} </td>
-                {props.readOnly ?" ":<td>
+                {props.readOnly ?"" :
+                    <td>
                         <button onClick={()=>removeItemFromCart(item._id)}>
                             Remove
                         </button>
                     </td>
                 }
-                {props.readOnly ? " ":
+                {props.readOnly ?"" :
                     <td>
                         <button onClick={() => updateItemFromCart(item._id, qty)}>
                             Update

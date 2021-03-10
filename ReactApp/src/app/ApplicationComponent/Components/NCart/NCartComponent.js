@@ -41,7 +41,7 @@ export default function NCartComponent(props) {
                         <th>Price</th>
                         <th>Description</th>
                         <th>Rating</th>
-                        <th>Quantity</th>
+                        <th >Quantity</th>
                         <th>Total</th>
                         {
                             props.readOnly ?  "" : 
