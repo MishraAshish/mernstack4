@@ -114,7 +114,7 @@ class App extends React.Component {
                             <Route path="/coupon" exact component={Coupon} />
                             <Route path="/about" exact component={About} />
                             <Route path="/about/:id" exact component={About} />
-                            {/* <Route path="/" component={Home} /> */}
+                            <Route path="/" exact component={Home} />
                             <Route path="*" component={NotFound} />
                         </Switch>
                     <Footer />
