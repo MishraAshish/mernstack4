@@ -9,7 +9,7 @@ function Parent(session) {
     var password = "xyztest*@##"; //private value
     var salary = "$3000"; //private value
 
-    var child = function (address) {
+    var child = function (address) { //function expression instead of named function
 
         return {
             name, //short hand ES-6
@@ -22,7 +22,7 @@ function Parent(session) {
 }
 
 var myOutPut = Parent("MERNSTack");
-console.log(myOutPut("Somewhere in India"))
+console.log(myOutPut("Somewhere in India"));
 
 var myOutPut1 = Parent("MEANSTack");
 console.log(myOutPut1("Somewhere in US"))

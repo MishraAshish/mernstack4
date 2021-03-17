@@ -1,6 +1,7 @@
 import React, {useState, useReducer, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";//two new hooks from react-redux library replacing connect method
 import {addCoupon} from "../../../State/Actions";
+import QRCode from "react-qr-code";
 
 //functional component
 let CouponHooks = (props) => {
@@ -38,6 +39,7 @@ let CouponHooks = (props) => {
                 <input type="button" className={"btn btn-primary col-md-2"} value={"Generate"} onClick={addCouponClick}/>
                 <input type="button" className={"btn btn-primary col-md-2"} value={"Go To Checkout"} onClick={()=>props.history.push("/checkout")}/>
             </div>
+            <QRCode value={coupon}  />
         </section>
     )
 }

@@ -1,14 +1,14 @@
 //Object or Object Literal : set of key value pair and gives us most of the the features close to classes
 //Object notation - {}
 
-// var User = {
-//     name : "Test",
-//     age : 21,
-//     business : "Odd Jobs",
-//     getName : function () {
-//         return this.name;
-//     }
-// }
+var User = {
+    name : "Test",
+    age : 21,
+    business : "Odd Jobs",
+    getName : function () {
+        return this.name;
+    }
+}
 
 // console.log(User.getName());
 
@@ -16,16 +16,16 @@
 
 // //one way is - we should avoid using this as it keeps prototype copied to the parent
 
-// // var employee = new Object(User);
-// // employee.address = "Somewhere on earth";
-// // console.log(employee.name);
-// // console.log(User.address);
+// var employee = new Object(User);
+// employee.address = "Somewhere on earth";
+// console.log(employee.name);
+// console.log(User.address);
 
 // //second way : this is the acceptable way of creating inheritance in objects, 
 // //this instead of copying object, copies the prototype chain so that the reference have one way flow
-// var student = Object.create(User);
-// student.address = "Somewhere on earth";
-// console.log(User.address);
+var student = Object.create(User);
+student.address = "Somewhere on earth";
+console.log(User.address);
 
 // student.name = "Jack";
 // student.getAddress = function () {

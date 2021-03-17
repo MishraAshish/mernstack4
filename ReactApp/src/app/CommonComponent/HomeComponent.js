@@ -121,7 +121,6 @@ export default class HomeComponent extends PureComponent {
                         <li>Save the user's cart.</li>
                         <li>Checkout and pay for items.</li>
                     </ul>
-
                     {/* <label>
                     Address:
                          <input type="text" ref={this.inputAddress} placeholder="Please enter age"/>
