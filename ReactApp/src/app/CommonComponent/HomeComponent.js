@@ -107,8 +107,8 @@ export default class HomeComponent extends PureComponent {
         // }
     }
 
-    render(){
-        return(
+    render(){ 
+        return( 
             <div className={"loadimage"} style={{backgroundImage: "url(/images/hm_pic4.jpg)"}}>
                     {/* <img src={"./images/hm_pic4.jpg"} /> */}
                     {this.state.Title}

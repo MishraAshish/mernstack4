@@ -49,3 +49,14 @@ function printName() {
 
 printName();
 console.log("14 " + uniqueName);
+
+
+// console.log(printNameConst)
+
+var printNameConst = function () {
+    console.log("6 "+uniqueName) //due to hoisting in printName it gets undefined value
+
+    var uniqueName = "Inner Unique"
+    
+    console.log("10 "+uniqueName)
+}

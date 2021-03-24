@@ -22,6 +22,10 @@ function resolveAfter2Seconds() {
 
 console.log("async Execution starts");
 
+//reactive programming in event based functional programming languages like javascript
+
+//loginUser();
+
 async function asyncCall() { //so interpreter will ask to create a new thread for this function to execute and will return on await
     console.log('calling async waiting call');
     
@@ -33,10 +37,18 @@ async function asyncCall() { //so interpreter will ask to create a new thread fo
     }); // this will stay here with new thread without impacting other executions
     //console.log(result);
     // expected output: 'resolved'
+    
+    await resolveAfter2Seconds()
+    .then(obj=>{
+        console.log(obj) //things to do when promise is settled
+     }).catch(obj=>{
+        console.log(obj) //things to do when promise gets rejected
+    });
+    
     console.log('this needs to wait in separate thread');
 } 
 
-asyncCall();
+asyncCall(); 
 
 console.log("async Execution ends");
 
