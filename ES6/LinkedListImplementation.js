@@ -67,7 +67,7 @@ class LinkedList {
         }
 
         if (this.tail && this.tail.value === value) {
-            this.tail == currNode;
+            this.tail = currNode;
         }
     }
 
