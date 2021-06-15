@@ -5,6 +5,26 @@ global.port = process.env.port || 9090;
 const bodyParser = require("body-parser");
 let router = require("./router");
 let cors = require("cors");// this middleware is used to set cross origin request in api's
+let swaggerJsDocs = require("swagger-jsdoc");
+let swaggerUI = require("swagger-ui-express");
+
+let swaggerOptions = {
+    swaggerDefinition : {
+        info:{
+            title : "Shopping Cart API",
+            desrciption:"Detailed Description",
+            contact: {
+                name : "Ashish Mishra"
+            },
+            servers: ["http://localhost:9090"]
+        }
+    },
+    // ['.routes/*.js']
+    apis:['router.js']
+}
+
+const swaggerDocs = swaggerJsDocs(swaggerOptions);
+app.use("/api-docs",swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use(cors());//setting this cors at global level so that each api can be accessed by other port
 

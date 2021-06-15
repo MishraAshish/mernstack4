@@ -52,6 +52,29 @@ main().catch(console.error);
 }
 
 //product api's
+//url to call : http://localhost:9090/api-docs
+/**
+ * @swagger
+ * /api/savenproduct:
+ *  post:
+ *      summary : add a new product
+ *      requestBody:
+ *          required: true
+ *      content:
+ *          application/x-www-form-urlencoded:
+ *      schema:
+ *          type: object
+ *          properties:
+ *              name:       # <!--- form field name
+ *                  type: string
+ *              price:      # <!--- form field name
+ *                  type: integer
+ *          required:
+ *              - name
+ *      responses:
+ *          '200':
+ *           description: save a product to db
+ */
 router.post('/api/savenproduct',(req, res)=>{
     console.log("n product data ", req.body);
 
@@ -65,7 +88,16 @@ router.post('/api/savenproduct',(req, res)=>{
         }
     })
 })
-
+//url to call : http://localhost:9090/api-docs
+/**
+ * @swagger
+ * /api/getnproducts:
+ *  get:
+ *      description: use to get all products
+ *      responses:
+ *          '200':
+ *           description: a full response to product
+ */
 router.get('/api/getnproducts',(req, res)=>{
     NProductDataModel.find((err, products)=>{ //error first callback
         if (err) {
