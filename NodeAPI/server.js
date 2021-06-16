@@ -24,14 +24,13 @@ let swaggerOptions = {
 }
 
 const swaggerDocs = swaggerJsDocs(swaggerOptions);
-app.use("/api-docs",swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 
 app.use(cors());//setting this cors at global level so that each api can be accessed by other port
 
 app.use(bodyParser.urlencoded({extended:false})); //middle-ware 
 app.use('/static', express.static('Public')); // serve static files like images css using static middle ware
 app.use(bodyParser.json({limit:'2mb', extended:false})); //json middle-ware
-app.use('/',router);
-
+//app.use('/',router);
+app.use("/api-docs",swaggerUI.serve, swaggerUI.setup(swaggerDocs));
 app.listen(global.port);
 console.log(`Express is listening at ${global.port}`);

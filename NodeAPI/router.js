@@ -53,28 +53,55 @@ main().catch(console.error);
 
 //product api's
 //url to call : http://localhost:9090/api-docs
+
 /**
  * @swagger
  * /api/savenproduct:
- *  post:
- *      summary : add a new product
- *      requestBody:
- *          required: true
- *      content:
- *          application/x-www-form-urlencoded:
- *      schema:
- *          type: object
- *          properties:
- *              name:       # <!--- form field name
- *                  type: string
- *              price:      # <!--- form field name
- *                  type: integer
- *          required:
- *              - name
- *      responses:
- *          '200':
- *           description: save a product to db
- */
+ *   post:
+ *     summary: Create a JSONPlaceholder user.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: The user's name.
+ *                 example: Leanne Graham
+ *               desc:
+ *                 type: string
+ *                 description: The user's name.
+ *                 example: Leanne Graham
+ *               price:
+ *                 type: number
+ *                 description: The user's name.
+ *                 example: Leanne Graham
+ *               rating:
+ *                 type: string
+ *                 description: The user's name.
+ *                 example: Leanne Graham
+ *     responses:
+ *       201:
+ *         description: Created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     desc:
+ *                       type: string
+ *                       description: The user ID.
+ *                       example: 0
+ *                     name:
+ *                       type: string
+ *                       description: The user's name.
+ *                       example: Leanne Graham
+*/
 router.post('/api/savenproduct',(req, res)=>{
     console.log("n product data ", req.body);
 
